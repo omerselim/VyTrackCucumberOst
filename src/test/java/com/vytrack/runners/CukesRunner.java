@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
         plugin = {
                 "html:target/default-cucumber-reports"
         },
-        tags = {"@vehicles"},
+        tags = {"@navigation"},
+//        tags = {"@VYT-4121"},
+//        tags = {"@vehicles"},
         features = {"src/test/resources/features" //to specify where are the features
         },
         //feature contains scenarios

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
@@ -485,6 +486,26 @@ public class BrowserUtils {
         new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT"))).
                 until(ExpectedConditions.stalenessOf(Driver.getDriver().findElement(by)));
     }
+    public static int getCountOfRows(By by){
+        return Driver.getDriver().findElements(by).size();
+    }
+
+    public static int randomInt(int max) {
+        Random rand = new Random();
+        return (rand.nextInt(max) + 1);
+    }
+
+
+    public static void clickRandomVehicle() {
+        int size =BrowserUtils.getCountOfRows(By.cssSelector("tbody[class='grid-body']>tr")); // table[id='table1'] > tbody>tr
+        System.out.println("Table size: "+size);
+        int random=randomInt(size);
+        Driver.getDriver().findElement(By.cssSelector("tbody[class='grid-body'] tr:nth-of-type(" + random + ")")).click();
+//        Driver.getDriver().findElement(By.xpath("//li[@class='ui-menu-item'])["+random+"]")).click();
+
+    }
+
+
 
 
 }
